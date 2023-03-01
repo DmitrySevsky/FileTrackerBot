@@ -39,17 +39,21 @@ bot.onText(/\/lock (.+)/, (msg, match) => {
 	const userId = msg.chat.id
 	const lockFile = match[1]
 
+console.log(111)
   for (const file of files) {
     if (file.fileName === lockFile && file.locked) {
 	    return bot.sendMessage(userId, `File ${lockFile} already locked by ${users[file.locked]}`)
     }
   }
+  console.log(222)
 
   if(!Object.hasOwn(users, userId)) {
     users[userId] = `${msg.chat.first_name} ${msg.chat.last_name}(${msg.chat.username})`
   }
+  console.log(333)
 
   files.push({fileName: lockFile, locked: userId})
+  console.log(444)
 
 	bot.sendMessage(userId, `Done!\nFile ${lockFile} now locked by you, ${users[userId]}`)
 })
