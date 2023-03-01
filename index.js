@@ -1,11 +1,7 @@
 require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api')
 
-try {
-  const bot = new TelegramBot(process.env.TOKEN, { polling: true })
-} catch (error) {
-  console.error(error)  
-}
+const bot = new TelegramBot(process.env.TOKEN, { polling: true })
 
 const users = {
   "UserId#1111": "UserName1",
