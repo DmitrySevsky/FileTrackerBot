@@ -1,6 +1,5 @@
 require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api')
-
 const bot = new TelegramBot(process.env.TOKEN, { polling: true })
 
 const users = {
@@ -26,16 +25,9 @@ const printFiles = (files) => {
   return str;
 }
 
-// bot.onText(/\/echo (.+)/, (msg, match) => {
-// 	const userId = msg.chat.id
-// 	const resp = match[1]
-
-// 	bot.sendMessage(userId, resp)
-// })
-
 bot.onText(/\/help/, (msg) => {
 	const userId = msg.chat.id
-	bot.sendMessage(userId, `${process.env.TOKEN}\n/info - get info about all files\n/lock \`fileName\` - add and lock file\n/unlock \`fileName\` - unlock (only your) file`)
+	bot.sendMessage(userId, "/info - get info about all files\n/lock \`fileName\` - add and lock file\n/unlock \`fileName\` - unlock (only your) file")
 })
 
 bot.onText(/\/info/, (msg) => {
